@@ -11,18 +11,23 @@ class Board
     ]
   end
 
-  def position(number)
-    position_index = nil
+  def display
+    board.each { |x| puts x.join }
+  end
 
+  # returns index of square position passed as argument
+  def choose_square(number)
     board.each do |row|
-      position_index = row.index(number)
-      return position_index unless position_index.nil?
+      square_index = row.index(number)
+      return square_index unless square_index.nil?
     end
   end
+
+  def square_available?; end
 end
 
 b = Board.new
 
-# b.board.each { |i| puts i.join }
+# b.display
 
-puts b.position(1)
+# puts b.choose_square(1)
