@@ -19,7 +19,7 @@ class Board
   def choose_square(number)
     board.each do |row|
       square_index = row.index(number)
-      return square_index unless square_index.nil?
+      break square_index unless square_index.nil?
     end
   end
 
@@ -30,4 +30,4 @@ b = Board.new
 
 # b.display
 
-# puts b.choose_square(1)
+puts b.choose_square(8)
