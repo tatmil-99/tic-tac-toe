@@ -17,8 +17,12 @@ class Board
 
     board.each do |row|
       row.each_index do |square|
-        row[square] = 'x' if row[square] == number
-        taken_squares << number
+        break if taken_squares.include?(number)
+
+        if row[square] == number
+          row[square] = 'x'
+          taken_squares << number
+        end
       end
     end
   end
