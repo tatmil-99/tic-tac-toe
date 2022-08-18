@@ -2,6 +2,7 @@ class Board
   attr_accessor :board, :taken_squares
 
   def initialize
+    @full = false
     self.taken_squares = []
     self.board = [
       [1, ' |', 2, ' |', 3],
@@ -10,6 +11,14 @@ class Board
       ['--', '|', '--', '|', '--'],
       [7, ' |', 8, ' |', 9]
     ]
+  end
+
+  def full?
+    if taken_squares.length == 9
+      @full = true
+    else
+      @full
+    end
   end
 
   def choose_square(number)
