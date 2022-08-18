@@ -1,7 +1,8 @@
 class Board
-  attr_accessor :board
+  attr_accessor :board, :taken_squares
 
   def initialize
+    self.taken_squares = []
     self.board = [
       [1, ' |', 2, ' |', 3],
       ['--', '|', '--', '|', '--'],
@@ -11,26 +12,24 @@ class Board
     ]
   end
 
-  def display
-    board.each { |x| puts x.join }
-  end
-
   def choose_square(number)
-    # board.each do |row|
-    #   square_index = row.index(number)
-    #   break square_index unless square_index.nil?
-    # end
+    return 'square taken' if taken_squares.include?(number)
 
     board.each do |row|
       row.each_index do |square|
         row[square] = 'x' if row[square] == number
+        taken_squares << number
       end
     end
   end
+
+  def display
+    board.each { |x| puts x.join }
+  end
 end
 
-b = Board.new
+# b = Board.new
 
-b.choose_square(1)
+# p b.choose_square(1)
 
-b.display
+# b.display
