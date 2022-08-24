@@ -1,3 +1,4 @@
+# handle user input from the command line
 class PlayerInput
   attr_reader :mark
 
