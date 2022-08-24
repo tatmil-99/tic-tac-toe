@@ -21,13 +21,16 @@ class Board
     end
   end
 
-  def choose_square(number)
+  # square selected by player object
+  def update_board(number)
     return 'square taken' if taken_squares.include?(number)
 
     board.each do |row|
       row.each_index do |square|
         break if taken_squares.include?(number)
 
+        # base mark (x or o) off of the player requesting the square
+        # (player's mark)
         if row[square] == number
           row[square] = 'x'
           taken_squares << number
@@ -43,6 +46,6 @@ end
 
 # b = Board.new
 
-# p b.choose_square(1)
+# p b.update_board(1)
 
 # b.display
