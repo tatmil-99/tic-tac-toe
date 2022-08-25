@@ -1,17 +1,46 @@
 require_relative 'player'
-# require_relative 'player_input'
+require_relative 'board'
 
 class Game
-  # future game loop here
-  def start
-    puts 'Player 1:'
-    player1_input = PlayerInput.new
-    player1_input.query_mark
-    player1 = Player.new(player1_input.mark)
+  attr_accessor :x_used, :o_used, :queried_letter, :query_count
 
-    puts 'Player 2:'
-    player2_input = PlayerInput.new
-    player2_input.query_mark
-    player2 = Player.new(player2_input.mark)
+  def initialize
+    @query_count = 0
+    @x_used = false
+    @o_used = false
+  end
+
+  def start
+    query_players_letters
+  end
+
+  def query_letter
+    self.query_count += 1
+
+    if query_count > 2
+      puts 'Choose a different letter:'
+    else
+      puts 'Choose "x" or "o":'
+    end
+
+    self.queried_letter = gets.chomp.downcase
+
+    self.x_used = true if queried_letter == 'x'
+    self.o_used = true if queried_letter == 'o'
+  end
+
+  def query_players_letters
+    puts 'Player 1:'
+    query_letter
+    player1 = Player.new(queried_letter)
+
+    until x_used && o_used
+      puts 'Player 2:'
+      query_letter
+      player2 = Player.new(queried_letter)
+    end
   end
 end
+
+g = Game.new
+g.start
