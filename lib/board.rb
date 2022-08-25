@@ -22,6 +22,7 @@ class Board
   end
 
   # square selected by player object
+  # may be able to pass a hash ({mark:square}) as number argument
   def update_board(number)
     return 'square taken' if taken_squares.include?(number)
 
