@@ -26,12 +26,14 @@ class Player
     @@x_used
   end
 
-  def x_used=(bool)
-    @@x_used = bool
-  end
-
   def o_used?
     @@o_used
+  end
+
+  private
+
+  def x_used=(bool)
+    @@x_used = bool
   end
 
   def o_used=(bool)
@@ -39,14 +41,14 @@ class Player
   end
 end
 
-player1_input = PlayerInput.new
-puts 'Player 1:'
-player1_input.query_mark
+# player1_input = PlayerInput.new
+# puts 'Player 1:'
+# player1_input.query_mark
 
-player1 = Player.new(player1_input.mark)
+# player1 = Player.new(player1_input.mark)
 
-player2_input = PlayerInput.new
-puts 'Player 2:'
-player2_input.query_mark
+# player2_input = PlayerInput.new
+# puts 'Player 2:'
+# player2_input.query_mark
 
-player2 = Player.new(player2_input.mark)
+# player2 = Player.new(player2_input.mark)
