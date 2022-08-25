@@ -30,7 +30,7 @@ class Player
     @@o_used
   end
 
-  private
+  privat
 
   def x_used=(bool)
     @@x_used = bool
