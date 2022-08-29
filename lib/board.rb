@@ -28,10 +28,8 @@ class Board
 
     board.each do |row|
       row.each_index do |square|
-        break if taken_squares.include?(number)
+        next row[square] unless row[square].is_a?(Integer)
 
-        # base mark (x or o) off of the player requesting the square
-        # (player's mark)
         if row[square] == number
           row[square] = 'x'
           taken_squares << number
@@ -47,6 +45,8 @@ end
 
 # b = Board.new
 
-# p b.update_board(1)
+# b.update_board(1)
 
-# b.display
+# puts taken_squares
+
+# puts b.display

@@ -12,16 +12,17 @@ class Game
 
   def start
     query_players_letters
+
+    # b = Board.new
+    # b.update_board(1)
+    # p b.taken_squares
+    # b.display
   end
 
   def query_letter
     self.query_count += 1
 
-    if query_count > 2
-      puts 'Choose a different letter:'
-    else
-      puts 'Choose "x" or "o":'
-    end
+    query_count > 2 ? puts('Try a different letter:') : puts('Pick x or o:')
 
     self.queried_letter = gets.chomp.downcase
 
