@@ -11,7 +11,9 @@ class Game
   end
 
   def start
-    query_players_letters
+    player1, player2 = query_players_letters
+
+    query_player_move(player1, player2)
 
     # b = Board.new
     # b.update_board(1)
@@ -40,6 +42,15 @@ class Game
       query_letter
       player2 = Player.new(queried_letter)
     end
+
+    [player1, player2]
+  end
+
+  def query_player_move(player1, player2)
+    # get player input
+    # pass input to a move method in player
+    puts player1 # tests variable scope
+    puts player2 # tests variable scope
   end
 end
 
