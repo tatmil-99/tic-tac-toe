@@ -12,17 +12,18 @@ class Game
 
   def start
     player1, player2 = query_players_letters
+    players = [player1, player2]
 
-    b = Board.new
-    b.display
+    board = Board.new
+    board.display
 
-    query_player_move(player1)
+    players.each do |player|
+      query_player_move(player)
+      board.update(player.move)
+      board.display
+    end
 
-    puts player1.move
-
-    b.update_board(player1.move)
-    p b.taken_squares
-    b.display
+    p board.taken_squares
   end
 
   def query_letter
@@ -50,13 +51,10 @@ class Game
     [player1, player2]
   end
 
-  # may include player2 as argument
-  def query_player_move(player1)
-    # get player input
-    puts 'Player 1 move:'
+  def query_player_move(player)
+    puts "Player #{player.number} make a move:"
     player_move = gets.to_i
-    # pass input to a move method in player
-    player1.move = player_move
+    player.move = player_move
   end
 end
 

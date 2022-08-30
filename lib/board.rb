@@ -23,7 +23,7 @@ class Board
 
   # square selected by player object
   # may be able to pass a hash ({mark:square}) as number argument
-  def update_board(number)
+  def update(number)
     return 'square taken' if taken_squares.include?(number)
 
     board.each do |row|
@@ -39,7 +39,7 @@ class Board
   end
 
   def display
-    board.each { |x| puts x.join }
+    board.each { |row| puts row.join }
   end
 end
 

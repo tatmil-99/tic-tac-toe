@@ -1,15 +1,19 @@
 # require_relative 'player_input'
 
-# Should I make a player number variable/methods?
+# do something like players_created for x/o_used????
 class Player
   # @@x_used = false
   # @@o_used = false
 
+  @@players_created = 0
+
   # attr_reader :letter
-  attr_accessor :letter, :move
+  attr_accessor :letter, :move, :number
 
   def initialize(letter)
+    @@players_created += 1
     self.letter = letter
+    self.number = @@players_created
   end
 
   # def letter=(letter)
