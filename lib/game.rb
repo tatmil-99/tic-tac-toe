@@ -13,12 +13,16 @@ class Game
   def start
     player1, player2 = query_players_letters
 
-    query_player_move(player1, player2)
+    b = Board.new
+    b.display
 
-    # b = Board.new
-    # b.update_board(1)
-    # p b.taken_squares
-    # b.display
+    query_player_move(player1)
+
+    puts player1.move
+
+    b.update_board(player1.move)
+    p b.taken_squares
+    b.display
   end
 
   def query_letter
@@ -46,11 +50,13 @@ class Game
     [player1, player2]
   end
 
-  def query_player_move(player1, player2)
+  # may include player2 as argument
+  def query_player_move(player1)
     # get player input
+    puts 'Player 1 move:'
+    player_move = gets.to_i
     # pass input to a move method in player
-    puts player1 # tests variable scope
-    puts player2 # tests variable scope
+    player1.move = player_move
   end
 end
 

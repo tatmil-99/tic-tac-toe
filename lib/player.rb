@@ -1,11 +1,12 @@
 # require_relative 'player_input'
 
+# Should I make a player number variable/methods?
 class Player
   # @@x_used = false
   # @@o_used = false
 
   # attr_reader :letter
-  attr_accessor :letter
+  attr_accessor :letter, :move
 
   def initialize(letter)
     self.letter = letter
