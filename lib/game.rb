@@ -10,6 +10,7 @@ class Game
     @o_used = false
   end
 
+  # rubocop:disable Metrics/MethodLength
   def start
     player1, player2 = query_players_letters
     players = [player1, player2]
@@ -17,13 +18,13 @@ class Game
     board = Board.new
     board.display
 
-    players.each do |player|
-      query_player_move(player)
-      board.update(player.move, player.letter)
-      board.display
+    until board.full? == true
+      players.each do |player|
+        query_player_move(player)
+        board.update(player.move, player.letter)
+        board.display
+      end
     end
-
-    p board.taken_squares
   end
 
   def query_letter
@@ -37,6 +38,7 @@ class Game
     self.o_used = true if queried_letter == 'o'
   end
 
+  # Would like to clean and DRY up this method
   def query_players_letters
     puts 'Player 1:'
     query_letter
