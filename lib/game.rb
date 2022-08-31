@@ -16,10 +16,13 @@ class Game
     players = [player1, player2]
 
     board = Board.new
+    puts 'Begin!'
     board.display
 
     until board.full? == true
       players.each do |player|
+        break if board.full? == true
+
         query_player_move(player)
         board.update(player.move, player.letter)
         board.display
@@ -31,7 +34,7 @@ class Game
   def query_letter
     self.query_count += 1
 
-    query_count > 2 ? puts('Try a different letter:') : puts('Pick x or o:')
+    query_count > 2 ? puts('try a different letter:') : puts('pick x or o:')
 
     self.queried_letter = gets.chomp.downcase
 
@@ -41,12 +44,12 @@ class Game
 
   # Would like to clean and DRY up this method
   def query_players_letters
-    puts 'Player 1:'
+    print 'Player 1 '
     query_letter
     player1 = Player.new(queried_letter)
 
     until x_used && o_used
-      puts 'Player 2:'
+      print 'Player 2 '
       query_letter
       player2 = Player.new(queried_letter)
     end
@@ -55,7 +58,7 @@ class Game
   end
 
   def query_player_move(player)
-    puts "Player #{player.number} make a move:"
+    puts "Player #{player.number} choose a square:"
     player_move = gets.to_i
     player.move = player_move
   end
