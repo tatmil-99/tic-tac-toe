@@ -23,7 +23,7 @@ class Board
 
   # square selected by player object
   # may be able to pass a hash ({mark:square}) as number argument
-  def update(number)
+  def update(number, letter)
     return 'square taken' if taken_squares.include?(number)
 
     board.each do |row|
@@ -31,7 +31,7 @@ class Board
         next row[square] unless row[square].is_a?(Integer)
 
         if row[square] == number
-          row[square] = 'x'
+          row[square] = letter
           taken_squares << number
         end
       end

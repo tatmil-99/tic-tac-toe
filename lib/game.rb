@@ -19,7 +19,7 @@ class Game
 
     players.each do |player|
       query_player_move(player)
-      board.update(player.move)
+      board.update(player.move, player.letter)
       board.display
     end
 
