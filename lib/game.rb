@@ -26,6 +26,7 @@ class Game
       end
     end
   end
+  # rubocop:enable Metrics/MethodLength
 
   def query_letter
     self.query_count += 1
