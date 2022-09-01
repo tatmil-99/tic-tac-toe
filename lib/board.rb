@@ -42,14 +42,20 @@ class Board
     board.each { |row| puts row.join }
   end
 
-  def three_in_a_row?; end
+  def three_in_a_row?
+    squares = taken_squares.map(&:values)
+                           .flatten
+                           .keep_if { |x| x.is_a?(Integer) }
+  end
 
   def winner; end
 end
 
-# b = Board.new
+b = Board.new
 
-# b.update_board(1)
+b.update(1, 'x')
+
+p b.three_in_a_row?
 
 # puts taken_squares
 
