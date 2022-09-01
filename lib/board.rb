@@ -32,7 +32,7 @@ class Board
 
         if row[square] == number
           row[square] = letter
-          taken_squares << number
+          taken_squares << { letter => number } # associates who took square
         end
       end
     end
@@ -41,6 +41,10 @@ class Board
   def display
     board.each { |row| puts row.join }
   end
+
+  def three_in_a_row?; end
+
+  def winner; end
 end
 
 # b = Board.new

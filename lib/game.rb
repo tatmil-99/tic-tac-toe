@@ -33,6 +33,7 @@ class Game
         end
 
         board.update(player.move, player.letter)
+        # p board.taken_squares
         board.display
       end
     end
