@@ -3,6 +3,7 @@ class Board
 
   def initialize
     @full = false
+    @three_in_a_row = false
     self.taken_squares = {}
     self.board = [
       [1, ' |', 2, ' |', 3],
@@ -39,7 +40,14 @@ class Board
 
   def three_in_a_row?
     values = taken_squares.fetch_values(1, 2, 3) { |key| key }
-    values.all? { |val| val == 'x' }
+
+    @three_in_a_row = if values.all? { |val| val == 'x' }
+                        true
+                      elsif values.all? { |val| val == 'o' }
+                        true
+                      else
+                        false
+                      end
   end
 
   def winner; end
@@ -47,8 +55,8 @@ end
 
 b = Board.new
 
-b.update(1, 'x')
-b.update(2, 'x')
+b.update(1, 'o')
+b.update(2, 'o')
 b.update(3, 'x')
 
 p b.three_in_a_row?
