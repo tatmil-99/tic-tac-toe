@@ -15,12 +15,6 @@ class Board
   end
 
   def full?
-    # if taken_squares.length == 9
-    #   @full = true
-    # else
-    #   @full
-    # end
-
     @full = taken_squares.length == 9
   end
 
