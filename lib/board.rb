@@ -38,18 +38,21 @@ class Board
   end
 
   def three_in_a_row?
-    # squares = taken_squares.map(&:values)
-    #                        .flatten
-    #                        .keep_if { |x| x.is_a?(Integer) }
+    values = taken_squares.fetch_values(1, 2, 3) { |key| key }
+    values.all? { |val| val == 'x' }
   end
 
   def winner; end
 end
 
-# b = Board.new
+b = Board.new
 
-# b.update(1, 'x')
+b.update(1, 'x')
+b.update(2, 'x')
+b.update(3, 'x')
 
-# p b.taken_squares
+p b.three_in_a_row?
+
+p b.taken_squares
 
 # puts b.display
