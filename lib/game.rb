@@ -20,14 +20,14 @@ class Game
     puts 'Begin!'
     board.display
 
+    # game loop
     until board.full? == true
       players.each do |player|
         break if board.full? == true
 
-        # query player's move until their move is available on the board
         loop do
           query_player_move(player)
-          break unless board.taken_squares.include?(player.move)
+          break unless board.taken_squares.key?(player.move)
 
           puts 'square taken...'
         end
