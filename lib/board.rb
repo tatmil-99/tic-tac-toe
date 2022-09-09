@@ -63,36 +63,4 @@ class Board
   # rubocop:enable Metrics/MethodLength
   # rubocop:enable Metrics/CyclomaticComplexity
   # rubocop:enable Metrics/PerceivedComplexity
-
-  def winner; end
 end
-
-# b = Board.new
-
-# b.update(1, 'x')
-# # b.update(2, 'o')
-# # b.update(3, 'x')
-
-# p b.three_in_a_row?
-
-# p b.taken_squares
-
-# # ==================
-
-# # b.update(4, 'x')
-# b.update(5, 'x')
-# # b.update(6, 'o')
-
-# p b.three_in_a_row?
-
-# p b.taken_squares
-
-# # ==================
-
-# b.update(9, 'x')
-
-# p b.three_in_a_row?
-
-# p b.taken_squares
-
-# puts b.display
