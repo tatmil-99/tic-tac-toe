@@ -34,17 +34,32 @@ class Board
     board.each { |row| puts row.join }
   end
 
-  def three_in_a_row?
-    values = taken_squares.fetch_values(1, 2, 3) { |key| key }
+  # Create an array with all winning patterns ([[1, 2, 3], ...]) as sub-array
+  # Iterate through array, then
+  # Fetch key values in each sub-array and store in values array, then
+  # If all values in values array are 'x' or 'o', then
+  # Set instance variable to true
+  # Else set instance variable to false
 
-    @three_in_a_row = if values.all? { |val| val == 'x' }
-                        true
-                      elsif values.all? { |val| val == 'o' }
-                        true
-                      else
-                        false
-                      end
+  # rubocop:disable Metrics/MethodLength
+  def three_in_a_row?
+    winning_patterns = [[1, 2, 3]]
+
+    winning_patterns.each do |pattern|
+      values = taken_squares.fetch_values(*pattern) { |key| key }
+
+      @three_in_a_row = if values.all? { |val| val == 'x' }
+                          true
+                        elsif values.all? { |val| val == 'o' }
+                          true
+                        else
+                          false
+                        end
+    end
+
+    @three_in_a_row
   end
+  # rubocop:ensable Metrics/MethodLength
 
   def winner; end
 end
