@@ -34,19 +34,20 @@ class Board
     board.each { |row| puts row.join }
   end
 
-  # Create an array with all winning patterns ([[1, 2, 3], ...]) as sub-array
-  # Iterate through array, then
-  # Fetch key values in each sub-array and store in values array, then
-  # If all values in values array are 'x' or 'o', then
-  # Set instance variable to true
-  # Else set instance variable to false
-
   # rubocop:disable Metrics/MethodLength
+  # rubocop:disable Metrics/CyclomaticComplexity
+  # rubocop:disable Metrics/PerceivedComplexity
   def three_in_a_row?
-    winning_patterns = [[1, 2, 3]]
+    winning_patterns = [
+      [1, 2, 3], [4, 5, 6], [7, 8, 9],
+      [1, 4, 7], [2, 5, 8], [3, 6, 9],
+      [1, 5, 9], [3, 5, 7]
+    ]
 
     winning_patterns.each do |pattern|
       values = taken_squares.fetch_values(*pattern) { |key| key }
+
+      break if @three_in_a_row == true
 
       @three_in_a_row = if values.all? { |val| val == 'x' }
                           true
@@ -59,19 +60,39 @@ class Board
 
     @three_in_a_row
   end
-  # rubocop:ensable Metrics/MethodLength
+  # rubocop:enable Metrics/MethodLength
+  # rubocop:enable Metrics/CyclomaticComplexity
+  # rubocop:enable Metrics/PerceivedComplexity
 
   def winner; end
 end
 
-b = Board.new
+# b = Board.new
 
-b.update(1, 'o')
-b.update(2, 'o')
-b.update(3, 'x')
+# b.update(1, 'x')
+# # b.update(2, 'o')
+# # b.update(3, 'x')
 
-p b.three_in_a_row?
+# p b.three_in_a_row?
 
-p b.taken_squares
+# p b.taken_squares
+
+# # ==================
+
+# # b.update(4, 'x')
+# b.update(5, 'x')
+# # b.update(6, 'o')
+
+# p b.three_in_a_row?
+
+# p b.taken_squares
+
+# # ==================
+
+# b.update(9, 'x')
+
+# p b.three_in_a_row?
+
+# p b.taken_squares
 
 # puts b.display

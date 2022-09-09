@@ -21,9 +21,9 @@ class Game
     board.display
 
     # game loop
-    until board.full? == true
+    until board.full? == true || board.three_in_a_row? == true
       players.each do |player|
-        break if board.full? == true
+        break if board.full? == true || board.three_in_a_row? == true
 
         loop do
           query_player_move(player)
